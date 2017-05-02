@@ -8,6 +8,9 @@ Add/Update/Remove Data to the <i>default</i> Cache
 
 <table>
         <tr>
+         <td><a href="cache?cacheAction=listRecords">List Records</a></td>
+        </tr>
+        <tr>
          <td><a href="AddRecord.jsp">Add Record</a></td>
         </tr>
         <tr>
