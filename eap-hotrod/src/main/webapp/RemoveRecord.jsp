@@ -3,7 +3,7 @@
 
 
 <br /> 
-Add Data to the <i>default</i> Cache
+Remove Data from the <i>default</i> Cache
 <br />
 
 <table>
