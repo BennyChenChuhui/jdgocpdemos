@@ -118,7 +118,7 @@ public class CacheServlet extends HttpServlet {
 		Set<String> keySet = cache.keySet();
 		if (keySet != null) {
 			for (String key : keySet) {
-				records += key + "=" + cache.get(key).toString() + "<br>");
+				records += key + "=" + cache.get(key).toString() + "<br>";
 			}
 		}
 		return records;
