@@ -21,10 +21,9 @@ import org.infinispan.client.hotrod.RemoteCacheManager;
 import org.infinispan.client.hotrod.configuration.ConfigurationBuilder;
 
 @SuppressWarnings("serial")
-@WebServlet(value = "/infinispan")
+@WebServlet(value = "/cache")
 public class TestServlet extends HttpServlet {
 
-	ArrayList<Player> list = new ArrayList<Player>();
 
 	private RemoteCacheManager cacheManager;
 	private RemoteCache<String, Object> cache;
@@ -50,29 +49,74 @@ public class TestServlet extends HttpServlet {
 		// Here the request is put in asynchronous mode
 		res.setContentType("text/html");
 
-		String name = req.getParameter("name");
-		String surname = req.getParameter("surname");
-		String teamName = req.getParameter("teamname");
+		String cacheAction = req.getParameter("cacheAction");
+		String cacheKey = req.getParameter("cacheKey");
+		String cacheValue = req.getParameter("cacheValue");
 
 		// Actual logic goes here.
 		PrintWriter out = null;
 		try {
 			out = res.getWriter();
+			String output = "Action: " + cacheAction + "<br>";
 
-			Player player = new Player();
-			player.setName(name);
-			player.setSurname(surname);
-			player.setTeamName(teamName);
-			String randomId = UUID.randomUUID().toString();
+			if ("addRecord".equals(cacheAction)) {
+			    addRecord(cacheKey, cacheValue);
+			    output += "cacheKey: " + cacheKey + "<br>";
+			    output += "cacheValue: " + cacheValue + "<br>";
+			}
+			else if ("updateRecord".equals(cacheAction)) {
+			    updateRecord(cacheKey, cacheValue);
+			    output += "cacheKey: " + cacheKey + "<br>";
+			    output += "cacheValue: " + cacheValue + "<br>";
+			}
+			else if ("removeRecord".equals(cacheAction)) {
+			    cacheValue = (String) findRecord(cacheKey);
+			    removeRecord(cacheKey);
+			    output += "cacheKey: " + cacheKey + "<br>";
+			    output += "cacheValue: " + cacheValue + "<br>";
+			}
+			else if ("findRecord".equals(cacheAction)) {
+			    cacheValue = (String) findRecord(cacheKey);
+			    output += "cacheKey: " + cacheKey + "<br>";
+			    output += "cacheValue: " + cacheValue + "<br>";
+			}
+			else if ("listRecords".equals(cacheAction)) {
+			    output += listRecords();
+			}
 
-			cache.put(randomId, player);
-
-			out.println("Added Player: " + cache.get(randomId));
+			out.println(output);
 			 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+	}
+	
+	protected void addRecord(String key, String value) {
+		cache.put(key, value);
+	}
+	
+	protected void updateRecord(String key, String value) {
+		cache.put(key, value);
+	}
+	
+	protected void removeRecord(String key) {
+		cache.remove(key, value);
+	}
+	
+	protected Object findRecord(String key) {
+		return cache.get(key);
+	}
+	
+	protected String listRecords() {
+		String records = "Cache Size: " + cache.size() + "<br>";
+		Set<String> keySet = cache.keySet();
+		if (keySet != null) {
+			for (String key : keySet) {
+				records += key + "=" + cache.get(key).toString() + "<br>");
+			}
+		}
+		return records;
 	}
 }
