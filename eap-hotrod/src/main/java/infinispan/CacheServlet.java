@@ -22,7 +22,7 @@ import org.infinispan.client.hotrod.configuration.ConfigurationBuilder;
 
 @SuppressWarnings("serial")
 @WebServlet(value = "/cache")
-public class TestServlet extends HttpServlet {
+public class CacheServlet extends HttpServlet {
 
 
 	private RemoteCacheManager cacheManager;
