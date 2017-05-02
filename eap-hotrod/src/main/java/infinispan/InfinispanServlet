@@ -65,9 +65,11 @@ public class TestServlet extends HttpServlet {
 			    output += "cacheValue: " + cacheValue + "<br>";
 			}
 			else if ("updateRecord".equals(cacheAction)) {
+			    String oldCacheValue = (String) findRecord(cacheKey);
 			    updateRecord(cacheKey, cacheValue);
 			    output += "cacheKey: " + cacheKey + "<br>";
-			    output += "cacheValue: " + cacheValue + "<br>";
+			    output += "Old cacheValue: " + oldCacheValue + "<br>";
+			    output += "New cacheValue: " + cacheValue + "<br>";
 			}
 			else if ("removeRecord".equals(cacheAction)) {
 			    cacheValue = (String) findRecord(cacheKey);
@@ -83,6 +85,8 @@ public class TestServlet extends HttpServlet {
 			else if ("listRecords".equals(cacheAction)) {
 			    output += listRecords();
 			}
+			
+			output += "<a href='index.jsp'>Back To Index Page</a><br>";
 
 			out.println(output);
 			 
