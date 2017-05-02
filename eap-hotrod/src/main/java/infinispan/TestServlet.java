@@ -33,7 +33,7 @@ public class TestServlet extends HttpServlet {
 	public void init() {
 
 		ConfigurationBuilder builder = new ConfigurationBuilder();
-		builder.addServer().host(System.getenv("DATAGRID_APP_HOTROD_SERVICE"))
+		builder.addServer().host(System.getenv("DATAGRID_APP_HOTROD_SERVICE_HOST"))
 				.port(Integer.parseInt(System.getenv("DATAGRID_APP_HOTROD_SERVICE_PORT")));
 		cacheManager = new RemoteCacheManager(builder.build());
 		cache = cacheManager.getCache("default");
