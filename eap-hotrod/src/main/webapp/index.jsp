@@ -20,7 +20,7 @@ Add/Update/Remove Data to the <i>default</i> Cache
          <td><a href="RemoveRecord.jsp">Remove Record</a></td>
         </tr>
         <tr>
-         <td><a href="UpdateRecord.jsp">Update Record</a></td>
+         <td><a href="FindRecord.jsp">Find Record</a></td>
         </tr>
 </table>
 
