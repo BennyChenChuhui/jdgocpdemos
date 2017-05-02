@@ -106,7 +106,7 @@ public class CacheServlet extends HttpServlet {
 	}
 	
 	protected void removeRecord(String key) {
-		cache.remove(key, value);
+		cache.remove(key);
 	}
 	
 	protected Object findRecord(String key) {
