@@ -3,40 +3,22 @@
 
 
 <br /> 
-Add Data to the <i>default</i> Cache
+Add/Update/Remove Data to the <i>default</i> Cache
 <br />
 
 <table>
-    <form method="post" action="test">
         <tr>
-        <td>Name</td>
-        <td>
-            <input type="text" name="name">
-        </td>
+         <td><a href="AddRecord.jsp">Add Record</a></td>
         </tr>
-       
-               <tr>
-        <td>Surname</td>
-        <td>
-            <input type="text" name="surname">
-        </td>
+        <tr>
+         <td><a href="UpdateRecord.jsp">Update Record</a></td>
         </tr>
-        
-                <tr>
-        <td>Team</td>
-        <td>
-            <input type="text" name="teamname">
-        </td>
+        <tr>
+         <td><a href="RemoveRecord.jsp">Remove Record</a></td>
         </tr>
-        
-                <tr>
-       
-        <td>
-           <input type="submit">
-        </td>
-        </tr>          
-    
-    </form>
+        <tr>
+         <td><a href="UpdateRecord.jsp">Update Record</a></td>
+        </tr>
 </table>
 
 
